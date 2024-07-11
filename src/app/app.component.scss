@@ -47,7 +47,7 @@ header {
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
       font-weight: 400;
-      line-height: 14px;
+      line-height: 14.63px;
       text-align: center;
       border-radius: 10px; 
       transition: background-color 0.3s, transform 0.3s;
@@ -85,6 +85,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 2px;
 }
 
 .title-underline {
@@ -107,14 +108,26 @@ main {
   width: 100%;
   max-width: 800px;
 
-  .intro, .contact {
+  .intro {
     background-color: #ea916b;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     margin-top: 2%;
     min-height: 30%;
-    width: 100%;
+    width: 110%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .contact {
+    background-color: #ea916b;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2%;
+    min-height: 30%;
+    width: 80%;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
@@ -128,6 +141,23 @@ main {
     flex-direction: column;
     justify-content: center;
     height: 100%;
+  }
+
+  .title-text {
+    font-size: 16px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 24px;
+    font-weight: 300;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+  }
+
+  .button-size {
+    font-size: 40px;
+    line-height: 14.63px;
+    font-weight: 400;
   }
 
   .contact {

@@ -2,8 +2,8 @@
   <header>
     <img class="logo" src="logo.png" alt="Logo">
     <nav>
-      <button (click)="showSection('intro')">INTRODUÇÃO</button>
-      <button (click)="showSection('contact')">CONTATO</button>
+      <button (click)="showSection('intro')" ><span class="button-size">INTRODUÇÃO</span></button>
+      <button (click)="showSection('contact')"><span class="button-size">CONTATO</span></button>
     </nav>
   </header>
 
@@ -19,7 +19,7 @@
     <section *ngIf="currentSection === 'intro'" id="intro" class="intro fade-in">
       <div *ngIf="apiData">
         <h2>{{ apiData.title }}</h2>
-        <p>{{ apiData.text }}</p>
+        <p class="title-text">{{ apiData.text }}</p>
       </div>
     </section>
     <section *ngIf="currentSection === 'contact'" id="contact" class="contact fade-in">
