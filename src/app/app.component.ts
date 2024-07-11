@@ -1,16 +1,20 @@
 import { Component, Renderer2, OnInit, ElementRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
 import { DataService } from './services/data.service';
+import { ToastComponent } from './components/toast/toast.component';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    CommonModule
-    ],
+    CommonModule,
+    ToastComponent,
+    ReactiveFormsModule
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [DataService]
@@ -20,13 +24,24 @@ export class AppComponent implements OnInit {
   currentSection: string = 'intro';
   currentTitle: string = 'Introdução';
   apiData: { title: string, text: string } | null = null;
+  toastMessage: string = '';
+  toastType: string = 'success';
+  form: FormGroup;
+  showToast: boolean = false;
+
 
   constructor(
     private renderer: Renderer2,
     private dataService: DataService,
     private el: ElementRef,
-    private toastr: ToastrService
-  ) {}
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      name: '',
+      email: '',
+      mensagem: ''
+    });
+  }
 
   ngOnInit(): void {
     this.dataService.getData().subscribe(response => {
@@ -69,7 +84,11 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    this.toastr.success('Enviado com sucesso!', 'Sucesso');
+  Envio(event: Event): void {
+    event.preventDefault();
+    this.toastMessage = 'Formulário de contato enviado com sucesso!';
+    this.toastType = 'success';
+    this.showToast = true;
+    setTimeout(() => this.showToast = false, 4000); 
   }
 }

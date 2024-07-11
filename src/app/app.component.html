@@ -2,7 +2,7 @@
   <header>
     <img class="logo" src="logo.png" alt="Logo">
     <nav>
-      <button (click)="showSection('intro')" ><span class="button-size">INTRODUÇÃO</span></button>
+      <button (click)="showSection('intro')"><span class="button-size">INTRODUÇÃO</span></button>
       <button (click)="showSection('contact')"><span class="button-size">CONTATO</span></button>
     </nav>
   </header>
@@ -23,16 +23,19 @@
       </div>
     </section>
     <section *ngIf="currentSection === 'contact'" id="contact" class="contact fade-in">
-      <form (ngSubmit)="onSubmit()">
+      <form [formGroup]="form" (submit)="Envio($event)">
         <div class="form-group">
-          <input type="text" id="name" name="name" placeholder="Nome*" required>
-          <input type="email" id="email" name="email" placeholder="E-mail*" required>
+          <input type="text" id="name" name="name" placeholder="Nome*" formControlName="name" required>
+          <input type="email" id="email" name="email" placeholder="E-mail*" formControlName="email" required>
         </div>
         <div class="form-group">
-          <textarea id="message" name="message" placeholder="Mensagem*" required></textarea>
+          <textarea id="message" name="message" placeholder="Mensagem*" formControlName="mensagem" required></textarea>
         </div>
+        {{form.value | json}}
         <button type="submit">ENVIAR</button>
       </form>
     </section>
   </main>
+
+  <app-toast *ngIf="showToast" [message]="toastMessage" [type]="toastType"></app-toast>
 </div>
