@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DataService } from './services/data.service';
 import { ToastComponent } from './components/toast/toast.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 
 
 @Component({
@@ -90,5 +91,14 @@ export class AppComponent implements OnInit {
     this.toastType = 'success';
     this.showToast = true;
     setTimeout(() => this.showToast = false, 4000); 
+  }
+
+  async sendEmail(){
+    emailjs.init('aJJls2-9RBpIVNPCe')
+    let response = await emailjs.send('service_4nuxp0a','template_e4x9ap8', {
+      name: this.form.value.name,
+      email: this.form.value.email,
+      mensagem: this.form.value.mensagem
+    })
   }
 }
