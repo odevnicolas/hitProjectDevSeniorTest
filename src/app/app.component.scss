@@ -1,0 +1,221 @@
+:host {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2D2D2D;
+  color: #f5f5f5;
+  text-align: center;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 2%;
+
+
+  .logo {
+    margin-top: 6%; 
+    margin-bottom: 1%; 
+    opacity: 1;
+  }
+  
+
+  nav {
+    display: flex;
+    gap: 20px;
+
+    button {
+      margin-top: 11%;
+      width: 200px;
+      height: 40px;
+      background: linear-gradient(240deg, #E05A4D 0%, #EA916B 100%); 
+      box-shadow: 0px 5px 5px 0px #00000029;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 14.63px;
+      text-align: center;
+      border-radius: 10px; 
+      transition: background-color 0.3s, transform 0.3s;
+
+      &:hover {
+        background: linear-gradient(240deg, #d55a50 0%, #ea916b 100%);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26.82px;
+  text-align: center;
+  width: 122px;
+  height: 27px;
+  margin-bottom: 2%; 
+}
+
+.title-underline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-underline {
+  width: 122px;
+  height: 0;
+  border-top: 2px solid #707070;
+}
+
+.title-square {
+  width: 20px;
+  height: 6px;
+  background: linear-gradient(300deg, #E05A4D 0%, #EA916B 100%);
+  margin-top: -3%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+
+  .intro, .contact {
+    background-color: #ea916b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2%;
+    min-height: 30%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .intro.fade-in, .contact.fade-in {
+    opacity: 1;
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .form-group {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        margin-bottom: 20px;
+
+        input, textarea {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 24px;
+          text-align: left;
+          color: #000000;
+          background-color: #ffffff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          padding: 10px;
+          width: 100%;
+          box-sizing: border-box;
+
+          &::placeholder {
+            color: #999999;
+          }
+        }
+
+        textarea {
+          height: 220px;
+          width: 800px; 
+          resize: none;
+        }
+      }
+
+      button {
+        width: 160px;
+        height: 40px;
+        background: #373735;
+        box-shadow: 0px 5px 5px 0px #00000029;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14.63px;
+        text-align: center;
+        border-radius: 10px;
+        transition: background-color 0.3s, transform 0.3s;
+
+        &:hover {
+          background-color: #2e2e2e;
+        }
+
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    nav {
+      flex-direction: column;
+      gap: 10px;
+
+      button {
+        width: 100%;
+        border-radius: 10px; 
+      }
+    }
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+}
